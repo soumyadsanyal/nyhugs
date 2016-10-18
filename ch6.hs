@@ -106,6 +106,6 @@ arith =
   \f -> 
     \x -> 
       \i -> 
-        if x<=0 then f i else (arith f (x-1) i)
+        (f i) + fromInteger x
 
 
