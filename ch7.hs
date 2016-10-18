@@ -53,6 +53,12 @@ foldBool' x y c
   | c = x
   | True = y
 
+g :: (a -> b) -> (a, c) -> (b, c)
+g = \f ->
+      \t ->
+        (f . fst $ t, id . snd $ t) 
+
+
 
 
 
