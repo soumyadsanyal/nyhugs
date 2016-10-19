@@ -36,7 +36,7 @@ hundredsDigit = snd . g . f
   where f = flip divMod 10
         g = f . fst
 
--- generalize the two exercises above
+-- generalize the two exercises above, repeated prefix forms and sectioning produces:
 --
 nthDigit :: Integral a => a -> Int -> a 
 nthDigit = (.) ((.) ((.) snd) (!!)) h
