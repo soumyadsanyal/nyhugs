@@ -39,7 +39,7 @@ hundredsDigit = snd . g . f
 -- generalize the two exercises above
 --
 nthDigit :: Integral a => a -> Int -> a 
-nthDigit x = ((.) ((.) snd) (!!)) $ h x
+nthDigit x = ((.) ((.) snd) (!!)) . h $ x
   where f = flip divMod 10
         g = f . fst
         h = (iterate g) . f
