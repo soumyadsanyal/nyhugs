@@ -39,9 +39,10 @@ hundredsDigit = snd . g . f
 -- generalize the two exercises above
 --
 nthDigit :: Integral a => a -> Int -> a 
-nthDigit x = snd . (!!) ((iterate g) . f $ x) 
+nthDigit x = (.) snd $ (!!) $ h x
   where f = flip divMod 10
         g = f . fst
+        h = (iterate g) . f
 
 foldBool :: a -> a -> Bool -> a
 foldBool x y c = case c of
