@@ -2,6 +2,12 @@ module WordNumber where
 
 import Data.List (intersperse)
 
+data SignedDigits = SignedDigits Char [Int]
+
+instance Show SignedDigits where
+  show (SignedDigits c l) = c : (show l)
+
+
 digitToWord :: Int -> String
 digitToWord n 
   | n==0 = "zero"
@@ -17,6 +23,9 @@ digitToWord n
   | True = error "not a digit"
 
 
+properDigits :: Int -> SignedDigits
+properDigits n = if n<0 then SignedDigits '-' (digits . abs $ n) else SignedDigits '+' (digits n)
+
 digits :: Int -> [Int]
 digits n = go n []
   where {
@@ -27,7 +36,10 @@ digits n = go n []
 
 
 wordNumber :: Int -> String
-wordNumber = concat . intersperse "-" . map digitToWord . digits 
+wordNumber n = (if sign == '-' then "negative " else "") ++ (concat . intersperse "-" . map digitToWord $ number)
+  where {
+  SignedDigits sign number = properDigits n
+}
 
 
 
