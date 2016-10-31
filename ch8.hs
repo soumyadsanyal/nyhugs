@@ -38,5 +38,11 @@ dividedBy dividend divisor = go dividend divisor 0
        | True = go (dividend - divisor) divisor (result+1)}
 	
 
+mc91 :: Int -> Int
+mc91 x
+  | x > 100 = x-10
+  | True = mc91.mc91 $ x+11
+
+
 
 
