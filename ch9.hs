@@ -16,6 +16,27 @@ myWords s
     t = lint s
 }
 
+linter :: Char -> String -> String
+linter breakpoint = dropWhile (== breakpoint)
+
+nns :: Char -> Char -> Bool
+nns breakpoint = (/= breakpoint)
+
+wws :: Char -> Char -> Bool
+wws breakpoint = (== breakpoint)
+
+myPieces :: Char -> String -> [String]
+myPieces breakpoint s
+  | t == "" = []
+  | True = (takeWhile (nns breakpoint) t) : (myPieces breakpoint (linter breakpoint (dropWhile (nns breakpoint) t)))
+  where {
+    t = linter breakpoint s
+}
+
+myLines :: String -> [String]
+myLines = myPieces '\n'
+
+-- Reduction should proceed as follows
 --f "a b c"
 --"a" : f "b c"
 --"a" : "b" : f "c"
