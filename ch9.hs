@@ -44,3 +44,14 @@ myLines = myPieces '\n'
 --"a" : "b" : "c" : []
 --["a", "b", "c"]
 --
+
+mySqr = [x^2 | x<- [1..5]]
+myCube = [x^3 | x<- [1..5]]
+
+squaresAndCubes = [(x, y) | x<- mySqr, y<- myCube]
+smallSquaresAndCubes = [(x, y) | x<- mySqr, y<- myCube, x<50, y<50]
+countSmallSquaresAndCubes = length [(x, y) | x<- mySqr, y<- myCube, x<50, y<50]
+
+
+
+
